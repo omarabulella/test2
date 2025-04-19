@@ -20,7 +20,7 @@ pipeline {
                 branch 'test'
             }
             steps {
-                echo 'Deploying to TEST environment.hh.l..'
+                echo 'Deploying to TEST environment.hh.l.s.'
             }
         }
              stage('Deploy main') {
