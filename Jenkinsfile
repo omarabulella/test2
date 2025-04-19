@@ -6,7 +6,7 @@ pipeline {
         CLUSTER_NAME = 'my-eks-cluster'
         IMAGE_NAME="my-app"
         AWS_ACCOUNT_ID ='339712834278'
-        ECR-REPO="339712834278.dkr.ecr.us-east-2.amazonaws.com/myapp"
+        ECR_REPO="339712834278.dkr.ecr.us-east-2.amazonaws.com/myapp"
     }
 
     stages {
