@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage{
+        stage('build and push the image'){
         steps {
         withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             script {
