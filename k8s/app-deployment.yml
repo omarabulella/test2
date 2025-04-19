@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: counter-app
-        image:  339712834278.dkr.ecr.us-east-2.amazonaws.com/myapp:latest
+        image:  IMAGE_PLACEHOLDER
         ports:
         - containerPort: 8000
         envFrom:
