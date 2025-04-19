@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'us-east-2'
+        REGION = 'us-east-2'
         CLUSTER_NAME = 'my-eks-cluster'
         IMAGE_NAME="my-app"
         AWS_ACCOUNT_ID ='339712834278'
