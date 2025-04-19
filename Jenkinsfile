@@ -18,7 +18,7 @@ pipeline {
             steps {
                                    withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])  {
     sh 'kubectl get pods'
-    sh 'kubectl apply k8s/'
+    sh 'kubectl apply -f k8s/'
 }
             }
         }
