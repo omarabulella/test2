@@ -22,7 +22,7 @@ pipeline {
                     aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_REPO
 
                     echo "Building Docker image..."
-                    docker build -t $IMAGE_NAME application/Dockerfile application
+                    docker build -t $IMAGE_NAME -f ./application/Dockerfile ./application
 
                     echo "Tagging Docker image..."
                     docker tag $IMAGE_NAME:latest $ECR_REPO:$branchTag
