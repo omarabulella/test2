@@ -4,14 +4,14 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-2'     
         CLUSTER_NAME = 'my-eks-cluster'  
-        BRANCH = "${env.BRANCH_NAME}"
+        BRANCH = ${env.GIT_BRANCH}
     }
 
     stages {
          stage('Branch Info') {
             steps {
                 script {
-                    echo "Building branch: ${env.BRANCH_NAME}"
+                    echo "Building branch: ${env.GIT_BRANCH}"
                 }
             }
             }
