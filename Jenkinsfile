@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Configure AWS & Kubeconfig') {
             steps {
-                           withCredentials([usernamePassword(credentialsId: 'aws-creds', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])  {
+                           withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])  {
     sh 'aws eks update-kubeconfig --name my-eks-cluster'
     sh 'kubectl get pods'
 }}
