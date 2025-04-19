@@ -28,7 +28,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Deploying to main environment...'
+                echo 'Deploying to main environment....'
             }
         }
         stage('Configure AWS & Kubeconfig') {
