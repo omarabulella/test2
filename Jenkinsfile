@@ -7,6 +7,7 @@ pipeline {
         IMAGE_NAME="my-app"
         AWS_ACCOUNT_ID ='339712834278'
         ECR_REPO="339712834278.dkr.ecr.us-east-2.amazonaws.com/myapp"
+        
     }
 
     stages {
@@ -18,16 +19,16 @@ pipeline {
 
                 sh """
                   
-                    aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
+                    aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_REPO
 
                     echo "Building Docker image..."
                     docker build -t $IMAGE_NAME application/Dockerfile application
 
                     echo "Tagging Docker image..."
-                    docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$ECR_REPO:$branchTag
+                    docker tag $IMAGE_NAME:latest $ECR_REPO:$branchTag
 
                     echo "Pushing to ECR..."
-                    docker push $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$ECR_REPO:$branchTag
+                    docker push $ECR_REPO:$branchTag
                 """
             }}
         }}
