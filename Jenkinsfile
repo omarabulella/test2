@@ -21,6 +21,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying to TEST environment.hh.l.s.'
+
             }
         }
              stage('Deploy main') {
@@ -28,7 +29,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Deploying to main environment...'
+                echo 'Deploying to main environment....'
             }
         }
         stage('Configure AWS & Kubeconfig') {
