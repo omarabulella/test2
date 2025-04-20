@@ -20,13 +20,8 @@ pipeline {
     steps {
         script {
             echo "Running unit tests with unittest..."
-            sh """
-                sudo apt-get update
-                sudo apt-get install -y python3 python3-pip
-                cd ./application
-                python3 -m pip install -r ./application/requirements.txt
-                python3 -m unittest discover -s test
-            """
+            sh 'pip install -r application/requirements.txt'
+            sh 'python3 application/test/test.py'
         }
     }
 }
