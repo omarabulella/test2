@@ -16,7 +16,7 @@ pipeline {
         script {
             echo "Running unit tests with unittest..."
             sh """
-                python3 -m pip install -r ./application/requirements.txt
+                python3 -m pip install --user -r ./application/requirements.txt
                 python3 -m unittest discover -s ./application/test
             """
         }
