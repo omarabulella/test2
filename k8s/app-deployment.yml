@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: counter-app
+  namespace: NAMESPACE_PLACEHOLDER
 spec:
   replicas: 1
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
       - name: counter-app
-        image:  339712834278.dkr.ecr.us-east-2.amazonaws.com/myapp:latest
+        image:  IMAGE_PLACEHOLDER
         ports:
         - containerPort: 8000
         envFrom:
@@ -25,6 +26,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
+  namespace: NAMESPACE_PLACEHOLDER
 spec:
   replicas: 1
   selector:

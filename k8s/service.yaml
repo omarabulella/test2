@@ -2,19 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis
-  namespace: prod
-spec:
-  selector:
-    app: redis
-  ports:
-  - port: 6379
-    targetPort: 6379
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis
-  namespace: test
+  namespace: NAMESPACE_PLACEHOLDER
 spec:
   selector:
     app: redis
@@ -26,20 +14,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app-service
-  namespace: test
-spec:
-  selector:
-    app: counter
-  ports:
-  - port: 80
-    targetPort: 8000
-  type: LoadBalancer
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: app-service
-  namespace: prod
+  namespace: NAMESPACE_PLACEHOLDER
 spec:
   selector:
     app: counter
