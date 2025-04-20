@@ -61,9 +61,9 @@ pipeline {
                     sh """
                         sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/configmap.yml
                         sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/app-deployment.yml
-                        sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/service.yml
+                        sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/service.yaml
                         kubectl apply -f ./k8s/configmap.yml
-                        kubectl apply -f ./k8s/service.yml
+                        kubectl apply -f ./k8s/service.yaml
                         kubectl apply -f ./k8s/app-deployment.yml
                     """
                 }
@@ -81,9 +81,9 @@ pipeline {
                     sh """
                         sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/configmap.yml
                         sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/app-deployment.yml
-                        sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/service.yml
+                        sed -i 's|NAMESPACE_PLACEHOLDER|$namespace|' ./k8s/service.yaml
                         kubectl apply -f ./k8s/configmap.yml
-                        kubectl apply -f ./k8s/service.yml
+                        kubectl apply -f ./k8s/service.yaml
                         kubectl apply -f ./k8s/app-deployment.yml
                     """
                 }
