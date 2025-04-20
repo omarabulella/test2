@@ -26,7 +26,6 @@ pipeline {
 
                         sh """
                             aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_REPO
-                            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 339712834278.dkr.ecr.us-east-2.amazonaws.com
                             echo "Building Docker image..."
                             docker build -t $IMAGE_NAME -f ./application/Dockerfile ./application
                             echo "Tagging Docker image..."
