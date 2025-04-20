@@ -11,6 +11,18 @@ pipeline {
     }
 
     stages {
+        stage('Run Tests') {
+    steps {
+        script {
+            echo "Running unit tests with unittest..."
+            sh """
+                cd ./application
+                pip install -r requirements.txt
+                python -m unittest discover -s test
+            """
+        }
+    }
+}
         stage('build and push the image'){
         steps {
         withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
