@@ -15,10 +15,13 @@ pipeline {
         steps {
         withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             script {
-                def branchTag = env.BRANCH_NAME
+                def versionFile = 'version.txt'
+                def currentVersion = readFile(versionFile).trim().toInteger()
+                def newVersion = currentVersion + 1
+                def branchTag = "v${newVersion}"
+                writeFile(file: versionFile, text: "${newVersion}")
 
-                sh """
-                  
+                sh """  
                     aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_REPO
 
                     echo "Building Docker image..."
