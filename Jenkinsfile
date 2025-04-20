@@ -55,6 +55,7 @@ pipeline {
                 branch 'test'
             }
             steps {
+                withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
                 script {
                     def namespace = 'test'
                     echo "Deploying to TEST environment with namespace: $namespace"
@@ -66,7 +67,7 @@ pipeline {
                         kubectl apply -f ./k8s/service.yaml
                         kubectl apply -f ./k8s/app-deployment.yml
                     """
-                }
+                }}
             }
         }
 
@@ -75,6 +76,7 @@ pipeline {
                 branch 'main'
             }
             steps {
+                withCredentials([usernamePassword(credentialsId: 'aws-cr', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
                 script {
                     def namespace = 'prod'
                     echo "Deploying to MAIN environment with namespace: $namespace"
@@ -86,7 +88,7 @@ pipeline {
                         kubectl apply -f ./k8s/service.yaml
                         kubectl apply -f ./k8s/app-deployment.yml
                     """
-                }
+                }}
             }
         }
 
