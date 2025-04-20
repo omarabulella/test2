@@ -31,7 +31,7 @@ pipeline {
                             echo "Tagging Docker image..."
                             docker tag $IMAGE_NAME:latest $IMAGE_URI
                             echo "Pushing to ECR..."
-                            docker push $IMAGE_URI
+                            docker push $ECR_REPO:$branchTag
                             echo "Replacing image in deployment.yaml..."
                             sed -i 's|IMAGE_PLACEHOLDER|'"$IMAGE_URI"'|' ./k8s/app-deployment.yml
                         """
