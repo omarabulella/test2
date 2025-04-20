@@ -12,6 +12,11 @@ pipeline {
 
     stages {
         stage('Run Tests') {
+            agent {
+        docker {
+            image 'python:3.10'
+        }
+    }
     steps {
         script {
             echo "Running unit tests with unittest..."
