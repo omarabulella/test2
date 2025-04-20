@@ -12,16 +12,13 @@ pipeline {
 
     stages {
         stage('Run Tests') {
-            agent {
-        docker {
-            image 'python:3.10'
-        }
-    }
     steps {
         script {
             echo "Running unit tests with unittest..."
-            sh 'pip install -r application/requirements.txt'
-            sh 'python3 application/test/test.py'
+            sh """
+                pip install -r ./application/requirements.txt
+                python -m unittest discover -s ./application/test
+            """
         }
     }
 }
