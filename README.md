@@ -137,7 +137,13 @@ helm upgrade --install prometheus prometheus-community/kube-prometheus-stack \
 * Access Prometheus and Grafana:
 
 Prometheus and Grafana are exposed through a LoadBalancer Service. You can access their web UIs to monitor the system’s health and metrics.
-## Step 8: Access Your Application:
-Once the pipeline is completed, your application will be deployed on the Kubernetes cluster. Access it via the LoadBalancer service.
+## Step 8: Access Your Application
 
+Once the pipeline is completed, your application will be deployed to the Kubernetes cluster. You can access it through the LoadBalancer service by navigating to the provided public IP or domain.
+
+**To access the application:**
+- Open your browser and go to `http://<LoadBalancer-IP>:<port>`.
+- The application should display a simple landing page or API response.
+
+![Application Output](application-output.png)
   
