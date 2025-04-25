@@ -37,3 +37,31 @@ Ensure your AWS credentials are configured to allow Terraform and AWS CLI to pro
 ```bash
 aws configure
 ```
+## Step 3: Provision Infrastructure with Terraform
+
+This project uses **Terraform** to provision the necessary infrastructure on AWS. The infrastructure includes:
+
+- An **EKS (Elastic Kubernetes Service)** cluster with two nodes.
+- A **CI/CD EC2 instance** (Virtual Machine) for Jenkins.
+- An **S3 bucket** to store Terraform state files.
+
+### 3.1: Set up Terraform Variables
+
+Before running the Terraform script, ensure that you have set the required values for the variables. These values are used for AWS resource creation (like AWS region, instance types, and other configurations).
+
+You can either define the variable values in a `terraform.tfvars` file or manually input them when prompted.
+
+**Example of a `terraform.tfvars` file:**
+
+```hcl
+# terraform.tfvars
+
+aws_access_key = "YOUR_AWS_ACCESS_KEY"
+aws_secret_key = "YOUR_AWS_SECRET_KEY"
+region         = "us-east-1"
+eks_node_type  = "t2.medium"
+eks_node_count = 2
+instance_type  = "t2.micro"
+key_name       = "your-key-pair-name"
+
+```
