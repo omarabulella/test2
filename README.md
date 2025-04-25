@@ -100,8 +100,8 @@ Once you’ve SSH'd into the EC2 instance and ensured Jenkins is installed, foll
 ### 1. Install Required Jenkins Plugins:
 ### 2. Add Required  Credentials to Jenkins: Store the following credentials in Jenkins:
 *REGION: 
-*cluster-name: 
-*image-name: 
-*AWS_ACCOUNT_ID: 
-*ECR_REPO:
+* cluster-name: 
+* image-name: 
+* AWS_ACCOUNT_ID: 
+* ECR_REPO:
 ### 3. Create a Multibranch Pipeline:
