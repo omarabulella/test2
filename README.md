@@ -21,30 +21,16 @@ Before starting, ensure you have the following tools installed:
 - **AWS CLI**: For managing AWS resources from the command line.
 - **kubectl**: To interact with the Kubernetes cluster.
   
-## 📁 Project Structure
-graduation-project/
-├── application/ 
-│ ├── static/ 
-│ ├── templates/ 
-│ ├── tests/ 
-│ ├── Dockerfile 
-│ ├── hello.py 
-│ └── requirements.txt 
-├── CICD/ 
-│ └── Jenkinsfile 
-├── infra/ 
-│ ├── ansible/ 
-│ │ ├── inventory.ini 
-│ │ └── playbook.yml 
-│ ├── scripts/ 
-│ │ └── config_cicd.sh 
-│ ├── terraform/ 
-│ │ ├── backend.tf  
-│ │ ├── main.tf  
-│ │ ├── outputs.tf
-│ │ └── variables.tf  
-│ ├── k8s/ 
-│ | ├── app-deployment.yml 
-│ | ├── configmap.yml 
-│ | ├── namespace.yml 
-│ | └── service.yml
+
+## How to Set Up the Project
+
+### Step 1: Clone the Repository
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/omarabulella/Complete-DevOps-Pipeline-Implementation.git
+cd Complete-DevOps-Pipeline-Implementation
+## Step 2: Set Up AWS Credentials
+Ensure your AWS credentials are configured to allow Terraform and AWS CLI to provision resources.
+```bash
+aws configure
