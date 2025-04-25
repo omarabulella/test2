@@ -55,13 +55,33 @@ You can either define the variable values in a `terraform.tfvars` file or manual
 
 ```hcl
 # terraform.tfvars
-
-aws_access_key = "YOUR_AWS_ACCESS_KEY"
-aws_secret_key = "YOUR_AWS_SECRET_KEY"
-region         = "us-east-1"
-eks_node_type  = "t2.medium"
-eks_node_count = 2
-instance_type  = "t2.micro"
-key_name       = "your-key-pair-name"
+region="us-east-2"
+ec2_instance_type="t2.micro"
+Eks_cluster_name="my-eks-cluster"
+vpc_cidr="10.0.0.0/16"
+ssh_key_name = "my-ssh-key"
+ssh_key_path = "~/.ssh/my-key.pem"
+s3_bucket_name = "my-terraform-state-bucket-konecta"
+ami_id = "ami-04f167a56786e4b09"
 
 ```
+### 3.2:  Initialize Terraform
+```bash
+terraform init
+```
+This command initializes Terraform and installs the necessary provider plugins.
+### 3.3:  Apply Terraform Configuration
+```bash
+terraform apply
+```
+Terraform will prompt you to confirm the infrastructure creation. Type yes to proceed.
+### 3.4: Ansible Playbook Trigger
+Once the EC2 instance is provisioned, the Terraform script will automatically trigger a Bash script that checks the availability of the VM and then runs the Ansible playbook to configure Jenkins on the VM. This ensures that the Jenkins setup is automated without any manual intervention.
+
+The Bash script (located in /scripts/config_cicd.sh) will:
+
+Check if the EC2 instance is up and running.
+
+Automatically apply the Ansible playbook to install and configure Jenkins.
+
+You don't need to manually trigger this step—Terraform will handle it automatically after the infrastructure is provisioned.
