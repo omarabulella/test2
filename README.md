@@ -7,6 +7,5 @@ This project simulates a real-world DevOps workflow by designing, automating, an
 Before starting, ensure you have the following tools installed:
 - **Terraform**: To provision infrastructure on AWS (EKS, EC2, S3).
 - **Ansible**: For automating the Jenkins setup.
-
-
-
+- **AWS CLI**: For managing AWS resources from the command line.
+- **kubectl**: To interact with the Kubernetes cluster.
