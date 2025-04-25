@@ -6,7 +6,7 @@ This project simulates a real-world DevOps workflow by designing, automating, an
 
 Before getting into the implementation details, here's a high-level diagram of the project's architecture. It illustrates the various components of the DevOps pipeline, from version control to infrastructure provisioning, containerization, CI/CD automation, deployment, and monitoring.
 
-![Project Architecture Diagram](Diagram.PNG)
+![Project Architecture Diagram](/docs/Diagram.PNG)
 
 ## 🛠 Technologies Used
 - **AWS (EKS, EC2, S3, ECR)**
@@ -126,17 +126,25 @@ Once you’ve SSH'd into the EC2 instance and ensured Jenkins is installed, foll
 
 * Deploy to Production Environment: This will deploy the application to the prod namespace in EKS if the pipeline is triggered from the main branch.
 ## Step 7: Monitoring with Prometheus and Grafana
-To monitor the application’s performance and health, we use Prometheus and Grafana. These tools provide metrics for the application and cluster health.
-* Install Prometheus using Helm:
-```bash
-helm upgrade --install prometheus prometheus-community/kube-prometheus-stack \
-  --namespace monitoring \
-  --set prometheus.prometheusSpec.additionalScrapeConfigs[0].job_name="ec2-node-exporter" \
-  --set prometheus.prometheusSpec.additionalScrapeConfigs[0].static_configs[0].targets[0]="<my-ec2-ip>:9100"
-```
-* Access Prometheus and Grafana:
 
-Prometheus and Grafana are exposed through a LoadBalancer Service. You can access their web UIs to monitor the system’s health and metrics.
+To monitor the performance and health of your application, we use **Prometheus** for metrics collection and **Grafana** for visualization.
+
+### Grafana Dashboard Example:
+Once the application is deployed, you can access the Grafana dashboard to monitor various metrics such as CPU usage, memory usage, and pod status. Here’s an example of what the Grafana dashboard may look like:
+
+![Grafana Dashboard](/docs/cluster-dashboard.PNG)
+
+This dashboard is set up to display the following metrics:
+- **CPU Usage**: Displays real-time CPU consumption of the application pods.
+- **Memory Usage**: Shows the memory usage of the application and Kubernetes cluster.
+- **Pod Status**: A table displaying the health of deployed pods.
+- **Request Rates**: A graph of incoming requests and response times for the application.
+
+### Access Grafana:
+- Grafana is exposed through a LoadBalancer service. To access it, navigate to the provided LoadBalancer IP address on port `3000` (default port for Grafana).
+- The default credentials are:
+   - **Username**: `admin`
+   - **Password**: `prom-operator` (Change this immediately after logging in)
 ## Step 8: Access Your Application
 
 Once the pipeline is completed, your application will be deployed to the Kubernetes cluster. You can access it through the LoadBalancer service by navigating to the provided public IP or domain.
@@ -145,5 +153,5 @@ Once the pipeline is completed, your application will be deployed to the Kuberne
 - Open your browser and go to `http://<LoadBalancer-IP>`.
 - The application should display a simple landing page or API response.
 
-![Application Output](application-output.PNG)
+![Application Output](/docs/application-output.PNG)
   
