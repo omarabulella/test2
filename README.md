@@ -99,9 +99,40 @@ ssh -i /path/to/your/key.pem ec2-user@<EC2_PUBLIC_IP>
 Once you’ve SSH'd into the EC2 instance and ensured Jenkins is installed, follow these steps to set up the Jenkins pipeline:
 ### 1. Install Required Jenkins Plugins:
 ### 2. Add Required  Credentials to Jenkins: Store the following credentials in Jenkins:
-*REGION: 
+* REGION: 
 * cluster-name: 
 * image-name: 
 * AWS_ACCOUNT_ID: 
 * ECR_REPO:
 ### 3. Create a Multibranch Pipeline:
+* In Jenkins, create a new Multibranch Pipeline and connect it to your GitHub repository.
+
+* Jenkins will automatically detect branches (test and main) and trigger the pipeline accordingly.
+### 3. Webhook Configuration:
+* In your GitHub repository, create a webhook that triggers Jenkins on changes to the test or main branches.
+
+* This will allow Jenkins to execute the pipeline when you push code to those branches.
+## Step 6: Define the Jenkins Pipeline in Jenkinsfile
+* Build and Push Docker Image: This will build the Docker image, tag it, and push it to the Amazon ECR repository.
+
+* Configure AWS and Kubernetes Cluster: This will set up the AWS EKS cluster and apply Kubernetes configurations.
+
+* Deploy to Test Environment: This will deploy the application to the test namespace in EKS if the pipeline is triggered from the test branch.
+
+* Deploy to Production Environment: This will deploy the application to the prod namespace in EKS if the pipeline is triggered from the main branch.
+## Step 7: Monitoring with Prometheus and Grafana
+To monitor the application’s performance and health, we use Prometheus and Grafana. These tools provide metrics for the application and cluster health.
+* Install Prometheus using Helm:
+```bash
+helm upgrade --install prometheus prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --set prometheus.prometheusSpec.additionalScrapeConfigs[0].job_name="ec2-node-exporter" \
+  --set prometheus.prometheusSpec.additionalScrapeConfigs[0].static_configs[0].targets[0]="<my-ec2-ip>:9100"
+```
+* Access Prometheus and Grafana:
+
+Prometheus and Grafana are exposed through a LoadBalancer Service. You can access their web UIs to monitor the system’s health and metrics.
+## Step 8: Access Your Application:
+Once the pipeline is completed, your application will be deployed on the Kubernetes cluster. Access it via the LoadBalancer service.
+
+  
