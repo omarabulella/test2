@@ -30,8 +30,10 @@ Clone the repository to your local machine:
 ```bash
 git clone https://github.com/omarabulella/Complete-DevOps-Pipeline-Implementation.git
 cd Complete-DevOps-Pipeline-Implementation
-exit
+```
+
 ## Step 2: Set Up AWS Credentials
 Ensure your AWS credentials are configured to allow Terraform and AWS CLI to provision resources.
 ```bash
 aws configure
+```
