@@ -94,6 +94,7 @@ To begin configuring Jenkins and deploying my app to the Kubernetes cluster, I f
 
 ```bash
 ssh -i /path/to/your/key.pem ec2-user@<EC2_PUBLIC_IP>
+```
 ## Step 5: Set Up Jenkins for CI/CD
 Once you’ve SSH'd into the EC2 instance and ensured Jenkins is installed, follow these steps to set up the Jenkins pipeline:
 ### 1. Install Required Jenkins Plugins:
