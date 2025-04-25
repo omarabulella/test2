@@ -85,3 +85,22 @@ Check if the EC2 instance is up and running.
 Automatically apply the Ansible playbook to install and configure Jenkins.
 
 You don't need to manually trigger this step—Terraform will handle it automatically after the infrastructure is provisioned.
+## Step 4: SSH into the EC2 Instance and Deploy Kubernetes Resources
+
+After successfully provisioning the infrastructure, I SSH into the **CI/CD EC2 instance** that was created using Terraform. This VM is configured to host **Jenkins** for automating the CI/CD pipeline. Here’s a breakdown of what I did next to set up and deploy the app.
+### 4.1: SSH into the EC2 Instance
+
+To begin configuring Jenkins and deploying my app to the Kubernetes cluster, I first needed to SSH into the EC2 instance. Here’s the command I used to access the instance:
+
+```bash
+ssh -i /path/to/your/key.pem ec2-user@<EC2_PUBLIC_IP>
+## Step 5: Set Up Jenkins for CI/CD
+Once you’ve SSH'd into the EC2 instance and ensured Jenkins is installed, follow these steps to set up the Jenkins pipeline:
+### 1. Install Required Jenkins Plugins:
+### 2. Add Required  Credentials to Jenkins: Store the following credentials in Jenkins:
+*REGION: 
+*cluster-name: 
+*image-name: 
+*AWS_ACCOUNT_ID: 
+*ECR_REPO:
+### 3. Create a Multibranch Pipeline:
