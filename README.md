@@ -22,4 +22,29 @@ Before starting, ensure you have the following tools installed:
 - **kubectl**: To interact with the Kubernetes cluster.
   
 ## 📁 Project Structure
-graduation-project/ ├── application/ │ ├── static/ │ ├── templates/ │ ├── tests/ │ ├── Dockerfile │ ├── hello.py │ ├── requirements.txt ├── CICD/ │ ├── Jenkinsfile ├── infra/ │ ├── ansible/ │ │ ├── inventory.ini │ │ ├── playbook.yml │ │ └── scripts/ │ │ └── config_cicd.sh │ ├── terraform/ │ ├── backend.tf │ ├── main.tf │ ├── outputs.tf │ ├── terraform.tfvars │ └── variables.tf ├── k8s/ │ ├── app-deployment.yml │ ├── configmap.yml │ ├── namespace.yml │ └── service.yml
+graduation-project/
+├── application/ 
+│ ├── static/ 
+│ ├── templates/ 
+│ ├── tests/ 
+│ ├── Dockerfile 
+│ ├── hello.py 
+│ └── requirements.txt 
+├── CICD/ 
+│ └── Jenkinsfile 
+├── infra/ 
+│ ├── ansible/ 
+│ │ ├── inventory.ini 
+│ │ └── playbook.yml 
+│ ├── scripts/ 
+│ │ └── config_cicd.sh 
+│ ├── terraform/ 
+│ │ ├── backend.tf  
+│ │ ├── main.tf  
+│ │ ├── outputs.tf
+│ │ └── variables.tf  
+│ ├── k8s/ 
+│ | ├── app-deployment.yml 
+│ | ├── configmap.yml 
+│ | ├── namespace.yml 
+│ | └── service.yml
